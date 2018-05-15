@@ -9,11 +9,11 @@ public class StateObject implements Cloneable{
     private String state2;
     private String state3;
 
-    public Memento createMemento(){
+    public IMemento createMemento(){
         return new Memento(BeanUtils.beanToMap(this));
     }
 
-    public void restoreMemento(Memento memento){
+    public void restoreMemento(IMemento memento){
         BeanUtils.mapToBean(this, memento.getStateMap());
     }
 

@@ -2,17 +2,15 @@ package pattern.memento;
 
 import java.util.HashMap;
 
-import pattern.memento.StateObject.Memento;
-
 
 public class MementoManager {
 
     private static final int MAX_SIZE = 10;
-    private HashMap<String, Memento> map = new HashMap<String, Memento>(MAX_SIZE);
-    public Memento getMemento(String index){
+    private HashMap<String, IMemento> map = new HashMap<String, IMemento>(MAX_SIZE);
+    public IMemento getMemento(String index){
         return this.map.get(index);
     }
-    public void setMemento(String index, Memento memento) throws OutSizeException{
+    public void setMemento(String index, IMemento memento) throws OutSizeException{
         if(map.size() < MAX_SIZE){
             this.map.put(index, memento);
         } else {

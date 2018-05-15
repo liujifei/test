@@ -30,9 +30,5 @@ public class Client {
         System.out.println("状态恢复为01：" + state);
         state.restoreMemento(manage.getMemento("02"));
         System.out.println("状态恢复为02：" + state);
-        state.restoreMemento(manage.getMemento("01"));
-        System.out.println("状态恢复为01：" + state);
-        state.restoreMemento(manage.getMemento("02"));
-        System.out.println("状态恢复为02：" + state);
     }
 }
