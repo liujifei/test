@@ -1,5 +1,6 @@
-package current.CountDownLatch;
+package current;
 
+import java.util.Random;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,12 +16,12 @@ public class CountDownLatchTest {
             public void run() {
                 System.out.println("执行线程1");
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(Math.abs(new Random().nextInt())%10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                countDownLatch.countDown();
                 System.out.println("线程1执行完毕");
+                countDownLatch.countDown();
             }
             
         });
@@ -29,12 +30,12 @@ public class CountDownLatchTest {
             public void run() {
                 System.out.println("执行线程2");
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(Math.abs(new Random().nextInt())%10000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                countDownLatch.countDown();
                 System.out.println("线程2执行完毕");
+                countDownLatch.countDown();
             }
             
         });
