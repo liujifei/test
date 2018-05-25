@@ -10,10 +10,19 @@ import java.util.concurrent.TimeoutException;
 
 
 public class CyclicBarrierTest {
-    private static ExecutorService threadPool = Executors.newFixedThreadPool(4);
+    private static ExecutorService threadPool = Executors.newFixedThreadPool(8);
     public static void main(String[] args) {
         int threadNum = 4;
         CyclicBarrier barrier = new CyclicBarrier(threadNum);
+        for(int i = 0; i < threadNum; i++){
+            threadPool.submit(new WorkThread(barrier));
+        }
+        try {
+            Thread.sleep(20000);
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         for(int i = 0; i < threadNum; i++){
             threadPool.submit(new WorkThread(barrier));
         }
